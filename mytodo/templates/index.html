@@ -1,0 +1,16 @@
+<html>
+    <head>
+<title>To-Do App</title>
+    </head>
+    <body>
+        <h1>My Tasks</h1>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                
+                 {% if task.complete%}  - {{task.title}} done {% else %} failed {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
