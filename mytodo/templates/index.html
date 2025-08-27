@@ -4,12 +4,19 @@
     </head>
     <body>
         <h1>My Tasks</h1>
+        <form method="POST" action="/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> add task </button>
+        </form>
         <ul>
             {% for task in tasks %}
             <li>
                 
                  {% if task.complete%}  - {{task.title}} done {% else %} failed {% endif %}
             </li>
+            <a href="{% url 'update_task' task.id %}">Update</a>
+            <a href="{% url 'delete_task' task.id %}">Delete</a>
             {% endfor %}
         </ul>
     </body>
