@@ -1,14 +1,27 @@
+{% load static %}
 <html>
     <head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 <title>To-Do App</title>
     </head>
     <body>
-        <h1>My Tasks</h1>
+        <nav style="color: blue;">
+            <a href="{% url 'login' %}">login</a>
+            <a href="{% url 'register' %}">register</a>
+        </nav>
+        {% if request.user.is_authenticated%}
+        <nav style="right: 0%;">
+            <a href="{% url 'logout' %}">logout</a>
+        </nav>
+        {% endif %}
         <form method="POST" action="/">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit"> add task </button>
         </form>
+        <h1>My Tasks</h1>
+
         <ul>
             {% for task in tasks %}
             <li>

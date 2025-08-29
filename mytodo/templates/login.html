@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+    <head><title>login</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    </head>
+<body>
+    <h2>login To-Do-App</h2>
+    <form method="POST" action="">
+        {%csrf_token%}
+        <label for="">Username</label>
+        <input type="text" name="username">
+        <label for="">password</label>
+        <input type="text" name="password">
+        <button type="submit">login</button>
+        
+    </form>
+    <nav>
+    <a style="text-align: center;"  href="{% url 'register'%}" class="my_link1">
+        <button type="submit" style="color: blue;">register</button>
+    </a>
+    
+    <a style="text-align: center;" href="/" >home</a>
+    </nav>
+</body>
+</html>
